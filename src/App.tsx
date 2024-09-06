@@ -1,39 +1,44 @@
-
-import React, { useState, useCallback } from 'react';
+import React, {useState, useCallback, useEffect} from 'react';
 import './App.css';
 import {generateRandomPassword} from "./paracet/utils.ts";
 import {PasswordInput} from "./components/PasswordInput.tsx";
 import {PasswordOptions} from "./components/PasswordOptions.tsx";
+import Footer from "./components/Footer.tsx";
+
 const App: React.FC = () => {
     const [length, setLength] = useState<number>(8);
     const [includeSpecialCharacters, setIncludeSpecialCharacters] = useState<boolean>(false);
     const [includeNumbers, setIncludeNumbers] = useState<boolean>(false);
     const [password, setPassword] = useState<string>("");
-    const [yourName, setYourName] = useState<string>("");
-    const [includeYourName, setIncludeYourName] = useState<boolean>(false);
-    const [includeRandomName, setIncludeRandomName] = useState<boolean>(false);
 
     const handleGeneratePassword = useCallback(() => {
         const newPassword = generateRandomPassword({
             length,
             includeSpecialCharacters,
             includeNumbers,
-            yourName,
-            includeYourName,
-            includeRandomName,
         });
         setPassword(newPassword);
-    }, [length, includeSpecialCharacters, includeNumbers, yourName, includeYourName, includeRandomName]);
+    }, [length, includeSpecialCharacters, includeNumbers]);
+
+
+    useEffect(() => {
+        handleGeneratePassword();
+    }, [
+        length, includeSpecialCharacters, includeNumbers
+    ]);
+
 
     return (
+        <div className={"h-full flex flex-col"}>
+
         <div
-            className="bg-cover bg-center h-screen flex flex-col items-center justify-center overflow-hidden"
+            className="flex h-full flex-col items-center justify-center"
         >
             <h1 className="my-5 text-2xl font-bold text-center rounded glass text-[#307473]">
-                Password Generator
+                Simplest Password Generator
             </h1>
-            <div className="glass flex flex-col justify-between h-2/5 w-11/12 p-3 rounded-lg text-[#F9F9F9]">
-                <PasswordInput password={password} />
+            <div className="glass flex flex-col justify-between w-full  max-w-4xl rounded-lg text-[#F9F9F9]">
+                <PasswordInput password={password}/>
                 <PasswordOptions
                     length={length}
                     setLength={setLength}
@@ -41,12 +46,6 @@ const App: React.FC = () => {
                     setIncludeSpecialCharacters={setIncludeSpecialCharacters}
                     includeNumbers={includeNumbers}
                     setIncludeNumbers={setIncludeNumbers}
-                    yourName={yourName}
-                    includeYourName={includeYourName}
-                    setIncludeYourName={setIncludeYourName}
-                    includeRandomName={includeRandomName}
-                    setIncludeRandomName={setIncludeRandomName}
-                    setYourName={setYourName}
                 />
                 <button
                     onClick={handleGeneratePassword}
@@ -55,6 +54,8 @@ const App: React.FC = () => {
                     Generate
                 </button>
             </div>
+        </div>
+            <Footer/>
         </div>
     );
 };
