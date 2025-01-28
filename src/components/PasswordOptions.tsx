@@ -20,7 +20,7 @@ export const PasswordOptions: React.FC<PasswordOptionsProps> = ({
   return (
     <div className='grid items-center gap-2 py-4'>
       <div className='flex items-center gap-2'>
-        <label className={'flex gap-2 w-full'}>Length: {length}</label>
+        <label className={'flex w-full gap-2'}>Length: {length}</label>
         <input
           className='w-full'
           type='range'
@@ -31,7 +31,7 @@ export const PasswordOptions: React.FC<PasswordOptionsProps> = ({
         />
       </div>
       <div className='flex items-center'>
-        <label className={'flex items-center gap-2 w-full'}>
+        <label className={'flex w-full items-center gap-2'}>
           <input
             className='h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600'
             type='checkbox'

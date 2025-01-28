@@ -26,12 +26,12 @@ const App: React.FC = () => {
   }, [handleGeneratePassword]);
 
   return (
-    <div className={'h-full flex flex-col'}>
+    <div className={'flex h-full flex-col'}>
       <div className='flex h-full flex-col items-center justify-center'>
-        <h1 className='my-5 text-2xl font-bold text-center rounded glass text-[#307473]'>
+        <h1 className='glass my-5 rounded text-center text-2xl font-bold text-[#307473]'>
           Simplest Password Generator
         </h1>
-        <div className='glass flex flex-col justify-between w-full  max-w-4xl rounded-lg text-[#F9F9F9]'>
+        <div className='glass flex w-full max-w-4xl flex-col justify-between rounded-lg text-[#F9F9F9]'>
           <PasswordInput password={password} />
           <PasswordOptions
             length={length}
@@ -43,7 +43,7 @@ const App: React.FC = () => {
           />
           <button
             onClick={handleGeneratePassword}
-            className='bg-[#307473] w-1/3 self-center h-12 rounded cursor-pointer'
+            className='h-12 w-1/3 cursor-pointer self-center rounded bg-[#307473]'
           >
             Generate
           </button>

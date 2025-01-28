@@ -65,7 +65,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({ password }) => {
             id='password'
             name='password'
             type='text'
-            className='block w-full text-white rounded-none rounded-l-md border-0 py-1.5 pl-10 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+            className='block w-full rounded-none rounded-l-md border-0 py-1.5 pl-10 text-white ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
           />
         </div>
         <button
