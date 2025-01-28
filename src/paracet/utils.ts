@@ -1,4 +1,5 @@
 import { GeneratePasswordOptions } from './types.ts';
+
 export const getRandomCharacter = (characterPool: string): string => {
   return characterPool.charAt(Math.floor(Math.random() * characterPool.length));
 };
